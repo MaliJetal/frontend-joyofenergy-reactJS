@@ -1,3 +1,8 @@
+/**
+ * Function to create mock readings data
+ * @param {number} length 
+ * @returns {Array} array of readings, each reading contains times and random values.
+ */
 export const getReadings = async (length = 1200) => {
   const current = Date.now();
   const hour = 1000 * 60 * 60;
@@ -7,6 +12,11 @@ export const getReadings = async (length = 1200) => {
   }));
 };
 
+/**
+ * Function to get readings on daily basis
+ * @param {Array} readings
+ * @returns {Array} array of readings grouped by day.
+ */
 export const groupByDay = (readings) => {
   const groupedByDay = readings.reduce((curr, { time, value }) => {
     const readingDate = new Date(time);
@@ -26,8 +36,11 @@ export const groupByDay = (readings) => {
   }));
 };
 
-export const sortByTime = (readings) => {
-  return [...readings].sort(
-    (readingA, readingB) => readingA.time - readingB.time
-  );
-};
+/**
+ * Function to sort the array as per the time.
+ * @param {Array} readings 
+ * @returns {Array} sorted readings
+ */
+export const sortByTime = (readings) => [...readings].sort(
+  (readingA, readingB) => readingA.time - readingB.time
+);

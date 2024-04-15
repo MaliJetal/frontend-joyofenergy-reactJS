@@ -11,18 +11,16 @@ export const App = () => {
     setReadings(result);
   }, []);
 
-  if (!readings) {
-    return null;
-  }
-
   return (
-    <div className="background shadow-2 flex overflow-hidden">
-      <aside className="p3 menuWidth overflow-auto">
-        <Sidebar />
-      </aside>
-      <article className="bg-very-light-grey p3 flex-auto overflow-auto">
-        <EnergyConsumption readings={readings} />
-      </article>
-    </div>
-  );
+    readings ? (
+      <div className='background shadow-2 flex overflow-hidden'>
+        <aside className='p3 menuWidth overflow-auto'>
+          <Sidebar />
+        </aside>
+        <article className='bg-very-light-grey p3 flex-auto overflow-auto'>
+          <EnergyConsumption readings={readings} containerId="usageChart"/>
+        </article>
+      </div>
+    ) : null
+  )
 };
