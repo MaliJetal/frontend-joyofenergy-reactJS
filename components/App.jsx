@@ -10,6 +10,7 @@ export const App = () => {
     const result = await getReadings();
     setReadings(result);
   }, []);
+  console.log(readings);
 
   return (
     readings ? (

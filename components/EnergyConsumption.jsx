@@ -4,14 +4,16 @@ import { groupByDay, sortByTime } from "../utils/reading";
 import { ENERGY_CONSUMPTION, ENERGY_CONSUMPTION_BTN } from "../constants/ApplicationConsants.js";
 
 export const EnergyConsumption = ({ readings, containerId }) => {
-  const updatedReadings = useCallback(async () => {
-    const groupedByDayReadings = await sortByTime(groupByDay(readings)).slice(-30);
-    renderChart(containerId, groupedByDayReadings);
+    const updatedReadings = useCallback(async () => {
+    const groupedByDayReadings = await sortByTime(groupByDay(readings));
+    console.log("Gj", groupedByDayReadings);
+    const slicedReadings = groupedByDayReadings?.slice(-30);
+    renderChart(containerId, slicedReadings);
   }, [readings]);
 
   useEffect(() => {
     updatedReadings();
-  }, [updatedReadings]);
+  }, []);
 
   return (
     <>

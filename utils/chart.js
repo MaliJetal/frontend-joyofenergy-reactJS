@@ -1,4 +1,5 @@
 import * as chartJs from "chart.js";
+import 'chart.js/auto';
 
 let chart;
 
@@ -43,6 +44,7 @@ export const renderChart = (containerId, readings) => {
 
   if (chart) {
     chart.destroy();
+    chart = null;
   }
 
   chart = new chartJs.Chart(containerId, {
